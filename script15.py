@@ -1,34 +1,80 @@
-# """ალგორითმის სირთულე და შემოწმებების რაოდენობა"""
-#
-# def constant_checks(data, target):
-#     # მხოლოდ პირველ ელემენტს ვადარებთ. შედარებების რაოდენობა მაქსიმუმ ერთია.
-#     checks = matches = 0
-#     for item in data:
-#         checks += 1
-#         matches += item == target
-#         break
-#     return checks, matches
+# """წყარო — დავალება (3).docx"""
 #
 #
-# def linear_checks(data, target):
-#     checks = matches = 0
-#     for item in data:
-#         checks += 1
-#         matches += item == target
-#     return checks, matches
+# # სავარჯიშო 1 — გეომეტრიული ფიგურები
+# class Shape:
+#     def __init__(self, name):
+#         self.name = name
+#
+#     def area(self):
+#         return 0
+#
+#     def info(self):
+#         print(f"{self.name}: ფართობი = {self.area()}")
 #
 #
-# def quadratic_checks(data, target):
-#     # ვითვლით დალაგებულ წყვილებს, რომელთა ჯამი target-ის ტოლია.
-#     checks = matches = 0
-#     for left in data:
-#         for right in data:
-#             checks += 1
-#             matches += left + right == target
-#     return checks, matches
+# class Rectangle(Shape):
+#     def __init__(self, width, height, name="მართკუთხედი"):
+#         super().__init__(name)
+#         self.width = width
+#         self.height = height
 #
-# data = [1, 2, 3, 4, 5]
-# for label, function in [("O(1)", constant_checks), ("O(n)", linear_checks),
-#                         ("O(n²)", quadratic_checks)]:
-#     checks, matches = function(data, 5)
-#     print(f"{label}: შემოწმება = {checks}, დამთხვევა = {matches}")
+#     @property
+#     def width(self):
+#         return self._width
+#
+#     @width.setter
+#     def width(self, value):
+#         if value <= 0:
+#             raise ValueError("სიგანე უნდა იყოს დადებითი")
+#         self._width = value
+#
+#     @property
+#     def height(self):
+#         return self._height
+#
+#     @height.setter
+#     def height(self, value):
+#         if value <= 0:
+#             raise ValueError("სიმაღლე უნდა იყოს დადებითი")
+#         self._height = value
+#
+#     def area(self):
+#         return self.width * self.height
+#
+#
+# class Square(Rectangle):
+#     def __init__(self, side):
+#         super().__init__(side, side, "კვადრატი")
+#
+#
+# class Circle(Shape):
+#     def __init__(self, radius):
+#         super().__init__("წრე")
+#         if radius <= 0:
+#             raise ValueError("რადიუსი უნდა იყოს დადებითი")
+#         self.radius = radius
+#
+#     def area(self):
+#         return round(3.14 * self.radius ** 2, 2)
+#
+#
+# def total_area(shapes):
+#     return round(sum(shape.area() for shape in shapes), 2)
+#
+#
+# def largest(shapes):
+#     return max(shapes, key=lambda shape: shape.area())
+#
+# shapes = [Rectangle(4, 5), Square(3), Circle(2), Shape("უცნობი ფიგურა")]
+# for shape in shapes:
+#     shape.info()
+# print("ჯამური ფართობი:", total_area(shapes))
+# print("უდიდესი:", largest(shapes).name)
+# print("მართკუთხედების რაოდენობა (კვადრატის ჩათვლით):", sum(isinstance(s, Rectangle) for s in shapes))
+#
+# for figure, size in [(Circle, -3), (Square, 0)]:
+#     try:
+#         figure(size)
+#     except ValueError as error:
+#         print("შეცდომა:", error)

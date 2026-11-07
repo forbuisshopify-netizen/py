@@ -1,50 +1,56 @@
-# """სტუდენტების ქულები"""
-#
-# import os
+# """წყარო — დავალება (2).docx"""
 #
 #
-# def save_scores(path: str, scores: dict[str, int]) -> None:
-#     with open(path, "w", encoding="utf-8") as file:
-#         for name, score in scores.items():
-#             file.write(f"{name}:{score}\n")
+# # სავარჯიშო 1 — წიგნის კლასი
+# class Book:
+#     def __init__(self, title, author, pages):
+#         self.title = title
+#         self.author = author
+#         self.pages = pages
+#
+#     def info(self):
+#         print(f"{self.title} — {self.author}, {self.pages} გვ.")
+#
+# books = [
+#     Book("ვეფხისტყაოსანი", "შოთა რუსთაველი", 250),
+#     Book("იგი", "ჯემალ ქარჩხაძე", 64),
+#     Book("ბახტრიონი", "ვაჟა-ფშაველა", 48),
+# ]
+# for book in books:
+#     book.info()
 #
 #
-# def add_score(path: str, name: str, score: int) -> None:
-#     with open(path, "a", encoding="utf-8") as file:
-#         file.write(f"{name}:{score}\n")
+# # სავარჯიშო 2 — მანქანები და ბორბლები
+# class Car:
+#     wheels = 4
+#
+#     def __init__(self, brand, color, year):
+#         self.brand = brand
+#         self.color = color
+#         self.year = year
+#
+# first = Car("BMW", "შავი", 2020)
+# second = Car("Toyota", "თეთრი", 2022)
+# print(first.brand, first.wheels)
+# print(second.brand, second.wheels)
+# second.wheels = 3
+# # მეორე მანქანას საკუთარი wheels აქვს. პირველი ისევ კლასის მნიშვნელობას კითხულობს.
+# print(first.wheels)
+# print(second.wheels)
+# print(Car.wheels)
 #
 #
-# def read_scores(path: str) -> dict[str, int]:
-#     scores = {}
-#     try:
-#         with open(path, encoding="utf-8") as file:
-#             for line in file:
-#                 if line.strip():
-#                     name, score = line.strip().split(":")
-#                     scores[name] = int(score)
-#     except FileNotFoundError:
-#         print("⚠ ფაილი ვერ მოიძებნა")
-#     return scores
+# # სავარჯიშო 3 — მოთამაშეების მთვლელი
+# class Player:
+#     players_count = 0
 #
-# os.makedirs("data", exist_ok=True)
+#     def __init__(self, name, level=1):
+#         self.name = name
+#         self.level = level
+#         Player.players_count += 1
 #
-# save_scores("data/scores.txt", {"ნინო": 92, "გიორგი": 78, "ანა": 85})
-# add_score("data/scores.txt", "დათო", 64)
-# add_score("data/scores.txt", "მარიამი", 97)
-#
-# with open("data/scores.txt", encoding="utf-8") as file:
-#     print(file.read(), end="")
-#
-# scores = read_scores("data/scores.txt")
-# print(scores)
-# print("სტუდენტები:", len(scores))
-# print("საშუალო ქულა:", round(sum(scores.values()) / len(scores), 1))
-# best = max(scores, key=scores.get)
-# print("საუკეთესო:", best, scores[best])
-#
-# with open("data/passed.txt", "w", encoding="utf-8") as file:
-#     for name, score in scores.items():
-#         if score >= 80:
-#             file.write(name + "\n")
-# with open("data/passed.txt", encoding="utf-8") as file:
-#     print("ჩააბარეს (80+):", file.read().splitlines())
+# print(Player.players_count)
+# players = [Player("ანა"), Player("დავითი", 5), Player(name="მარიამი", level=3)]
+# print("სულ მოთამაშე:", Player.players_count)
+# for player in players:
+#     print(player.name, player.level)
