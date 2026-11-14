@@ -1,4 +1,4 @@
-# """წყარო — დავალება (3).odt | Thread-ები და პროცესები"""
+# """Thread-ები და პროცესები"""
 #
 # import time
 # import threading
