@@ -1,4 +1,4 @@
-# """წყარო — დავალება (4).odt | asyncio და კორუტინები"""
+# """asyncio და კორუტინები"""
 #
 # import asyncio
 # import time
